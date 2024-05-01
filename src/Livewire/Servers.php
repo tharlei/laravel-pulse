@@ -3,8 +3,10 @@
 namespace Laravel\Pulse\Livewire;
 
 use Carbon\CarbonImmutable;
+use Carbon\CarbonInterval;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\InteractsWithTime;
 use Livewire\Attributes\Lazy;
 use Livewire\Livewire;
 
@@ -14,6 +16,10 @@ use Livewire\Livewire;
 #[Lazy]
 class Servers extends Card
 {
+    use InteractsWithTime;
+
+    public int|string|null $ignoreAfter = null;
+
     /**
      * Render the component.
      */
@@ -24,6 +30,10 @@ class Servers extends Card
 
             return $this->values('system')
                 ->map(function ($system, $slug) use ($graphs) {
+                    if ($this->ignoreSystem($system)) {
+                        return null;
+                    }
+
                     $values = json_decode($system->value, flags: JSON_THROW_ON_ERROR);
 
                     return (object) [
@@ -38,6 +48,7 @@ class Servers extends Card
                         'recently_reported' => $updatedAt->isAfter(now()->subSeconds(30)),
                     ];
                 })
+                ->filter()
                 ->sortBy('name');
         });
 
@@ -58,5 +69,23 @@ class Servers extends Card
     public function placeholder(): Renderable
     {
         return View::make('pulse::components.servers-placeholder', ['cols' => $this->cols, 'rows' => $this->rows, 'class' => $this->class]);
+    }
+
+    /**
+     * Determine if the system should be ignored.
+     *
+     * @param  object{ timestamp: int, key: string, value: string }  $system
+     */
+    protected function ignoreSystem(object $system): bool
+    {
+        if ($this->ignoreAfter === null) {
+            return false;
+        }
+
+        $ignoreAfter = is_numeric($this->ignoreAfter)
+            ? (int) $this->ignoreAfter
+            : CarbonInterval::createFromDateString($this->ignoreAfter)->totalSeconds;
+
+        return CarbonImmutable::createFromTimestamp($system->timestamp)->addSeconds($ignoreAfter)->isPast();
     }
 }
