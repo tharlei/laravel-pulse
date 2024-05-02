@@ -58,7 +58,7 @@ class RedisAdapter
             ...$count !== null ? ['COUNT', "$count"] : [],
         ]))->mapWithKeys(fn ($value, $key) => [
             $value[0] => collect($value[1]) // @phpstan-ignore argument.templateType argument.templateType
-            ->chunk(2)
+                ->chunk(2)
                 ->map->values()
                 ->mapWithKeys(fn ($value, $key) => [$value[0] => $value[1]])
                 ->all(),
