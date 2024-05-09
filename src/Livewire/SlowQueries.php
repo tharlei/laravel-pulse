@@ -5,6 +5,7 @@ namespace Laravel\Pulse\Livewire;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\View;
+use Laravel\Pulse\Recorders\Concerns\Thresholds;
 use Laravel\Pulse\Recorders\SlowQueries as SlowQueriesRecorder;
 use Livewire\Attributes\Lazy;
 use Livewire\Attributes\Url;
@@ -15,6 +16,8 @@ use Livewire\Attributes\Url;
 #[Lazy]
 class SlowQueries extends Card
 {
+    use Thresholds;
+
     /**
      * Ordering.
      *
@@ -56,6 +59,7 @@ class SlowQueries extends Card
                     'location' => $location,
                     'slowest' => $row->max,
                     'count' => $row->count,
+                    'threshold' => $this->threshold($sql, SlowQueriesRecorder::class),
                 ];
             }),
             $this->orderBy,

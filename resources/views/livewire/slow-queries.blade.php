@@ -20,7 +20,7 @@ if ($this->wantsHighlighting()) {
     <x-pulse::card-header
         name="Slow Queries"
         title="Time: {{ number_format($time) }}ms; Run at: {{ $runAt }};"
-        details="{{ $config['threshold'] }}ms threshold, past {{ $this->periodForHumans() }}"
+        details="{{ is_array($config['threshold']) ? '' : $config['threshold'].'ms threshold, ' }}past {{ $this->periodForHumans() }}"
     >
         <x-slot:icon>
             <x-pulse::icons.circle-stack />
@@ -66,6 +66,11 @@ if ($this->wantsHighlighting()) {
                                         @if ($query->location)
                                             <p class="px-3 mt-3 text-xs leading-none text-gray-400 dark:text-gray-500">
                                                 {{ $query->location }}
+                                            </p>
+                                        @endif
+                                        @if (is_array($config['threshold']))
+                                            <p class="px-3 mt-3 text-xs leading-none text-gray-400 dark:text-gray-500">
+                                                {{ $query->threshold }}ms threshold
                                             </p>
                                         @endif
                                     </div>
