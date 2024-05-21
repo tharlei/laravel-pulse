@@ -1,6 +1,14 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/pulse/compare/v1.1.0...1.x)
+## [Unreleased](https://github.com/laravel/pulse/compare/v1.2.0...1.x)
+
+## [v1.2.0](https://github.com/laravel/pulse/compare/v1.1.0...v1.2.0) - 2024-05-17
+
+* [1.x] Ensure missing user does not throw a type error by [@timacdonald](https://github.com/timacdonald) in https://github.com/laravel/pulse/pull/366
+* [1.x] Allow thresholds of slow queries, jobs and requests to be customised by regex pattern by [@matheus-carvalho](https://github.com/matheus-carvalho) in https://github.com/laravel/pulse/pull/340
+* [1.x] Removes the padding right when there is no scroll active. by [@xiCO2k](https://github.com/xiCO2k) in https://github.com/laravel/pulse/pull/369
+* [1.x] Associate label with select by [@timacdonald](https://github.com/timacdonald) in https://github.com/laravel/pulse/pull/371
+* [1.x] Improve config for 3rd party cards by [@timacdonald](https://github.com/timacdonald) in https://github.com/laravel/pulse/pull/372
 
 ## [v1.1.0](https://github.com/laravel/pulse/compare/v1.0.0...v1.1.0) - 2024-05-06
 
