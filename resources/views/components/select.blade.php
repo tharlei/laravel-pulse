@@ -1,3 +1,4 @@
+@use('Illuminate\Support\Str')
 @props([
     'id' => 'select-'.Str::random(),
     'label',

@@ -13,6 +13,7 @@ use Laravel\Pulse\Contracts\Storage;
 use Laravel\Pulse\Entry;
 use Laravel\Pulse\Facades\Pulse;
 use Laravel\Pulse\Value;
+use Livewire\Livewire;
 use Livewire\LivewireManager;
 use Tests\StorageFake;
 use Tests\User;
