@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/pulse/compare/v1.2.0...1.x)
+## [Unreleased](https://github.com/laravel/pulse/compare/v1.2.1...1.x)
+
+## [v1.2.1](https://github.com/laravel/pulse/compare/v1.2.0...v1.2.1) - 2024-05-22
+
+* Fix exception from missing import on select component by [@rginnow](https://github.com/rginnow) in https://github.com/laravel/pulse/pull/373
 
 ## [v1.2.0](https://github.com/laravel/pulse/compare/v1.1.0...v1.2.0) - 2024-05-17
 
