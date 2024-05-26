@@ -50,14 +50,14 @@ class RedisAdapter
      */
     public function xrange(string $key, string $start, string $end, ?int $count = null): array
     {
-        return collect($this->handle([ // @phpstan-ignore return.type argument.templateType argument.templateType
+        return collect($this->handle([ // @phpstan-ignore return.type, argument.templateType, argument.templateType
             'XRANGE',
             $this->config->get('database.redis.options.prefix').$key,
             $start,
             $end,
             ...$count !== null ? ['COUNT', "$count"] : [],
         ]))->mapWithKeys(fn ($value, $key) => [
-            $value[0] => collect($value[1]) // @phpstan-ignore argument.templateType argument.templateType
+            $value[0] => collect($value[1]) // @phpstan-ignore argument.templateType, argument.templateType
                 ->chunk(2)
                 ->map->values()
                 ->mapWithKeys(fn ($value, $key) => [$value[0] => $value[1]])
