@@ -69,22 +69,22 @@ class DatabaseStorage implements Storage
             }, ['count' => [], 'min' => [], 'max' => [], 'sum' => [], 'avg' => []])
         );
 
-        $countChunks = $this->preaggregateCounts(collect($counts)) // @phpstan-ignore argument.templateType argument.templateType
+        $countChunks = $this->preaggregateCounts(collect($counts)) // @phpstan-ignore argument.templateType, argument.templateType
             ->chunk($this->config->get('pulse.storage.database.chunk'));
 
-        $minimumChunks = $this->preaggregateMinimums(collect($minimums)) // @phpstan-ignore argument.templateType argument.templateType
+        $minimumChunks = $this->preaggregateMinimums(collect($minimums)) // @phpstan-ignore argument.templateType, argument.templateType
             ->chunk($this->config->get('pulse.storage.database.chunk'));
 
-        $maximumChunks = $this->preaggregateMaximums(collect($maximums)) // @phpstan-ignore argument.templateType argument.templateType
+        $maximumChunks = $this->preaggregateMaximums(collect($maximums)) // @phpstan-ignore argument.templateType, argument.templateType
             ->chunk($this->config->get('pulse.storage.database.chunk'));
 
-        $sumChunks = $this->preaggregateSums(collect($sums)) // @phpstan-ignore argument.templateType argument.templateType
+        $sumChunks = $this->preaggregateSums(collect($sums)) // @phpstan-ignore argument.templateType, argument.templateType
             ->chunk($this->config->get('pulse.storage.database.chunk'));
 
-        $averageChunks = $this->preaggregateAverages(collect($averages)) // @phpstan-ignore argument.templateType argument.templateType
+        $averageChunks = $this->preaggregateAverages(collect($averages)) // @phpstan-ignore argument.templateType, argument.templateType
             ->chunk($this->config->get('pulse.storage.database.chunk'));
 
-        $valueChunks = $this
+        $valueChunks = $this // @phpstan-ignore argument.templateType
             ->collapseValues($values)
             ->when(
                 $this->requiresManualKeyHash(),
@@ -464,7 +464,7 @@ class DatabaseStorage implements Storage
 
         $structure = collect($types)->mapWithKeys(fn ($type) => [$type => $padding]);
 
-        return $this->connection()->table('pulse_aggregates') // @phpstan-ignore return.type
+        return $this->connection()->table('pulse_aggregates')
             ->select(['bucket', 'type', 'key', 'value'])
             ->whereIn('type', $types)
             ->where('aggregate', $aggregate)
@@ -725,7 +725,7 @@ class DatabaseStorage implements Storage
         $tailStart = $windowStart;
         $tailEnd = $oldestBucket - 1;
 
-        return $this->connection()->query()
+        return $this->connection()->query() // @phpstan-ignore return.type
             ->when(is_array($types), fn ($query) => $query->addSelect('type'))
             ->selectRaw(match ($aggregate) {
                 'count' => "sum({$this->wrap('count')})",

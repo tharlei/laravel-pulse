@@ -90,7 +90,7 @@ class Exceptions
     {
         return match (true) {
             $e instanceof \Illuminate\View\ViewException => $this->resolveLocationFromViewException($e),
-            $e instanceof \Spatie\LaravelIgnition\Exceptions\ViewException => $this->formatLocation($e->getFile(), $e->getLine()), // @phpstan-ignore class.notFound class.notFound class.notFound
+            $e instanceof \Spatie\LaravelIgnition\Exceptions\ViewException => $this->formatLocation($e->getFile(), $e->getLine()), // @phpstan-ignore class.notFound, class.notFound, class.notFound
             default => $this->resolveLocationFromTrace($e)
         };
     }
