@@ -1,6 +1,11 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/pulse/compare/v1.2.1...1.x)
+## [Unreleased](https://github.com/laravel/pulse/compare/v1.2.2...1.x)
+
+## [v1.2.2](https://github.com/laravel/pulse/compare/v1.2.1...v1.2.2) - 2024-05-26
+
+* [1.x] Use Contracts for common services by [@timacdonald](https://github.com/timacdonald) in https://github.com/laravel/pulse/pull/376
+* [1.x] Fix static analysis by [@timacdonald](https://github.com/timacdonald) in https://github.com/laravel/pulse/pull/379
 
 ## [v1.2.1](https://github.com/laravel/pulse/compare/v1.2.0...v1.2.1) - 2024-05-22
 
