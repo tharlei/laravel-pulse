@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/pulse/compare/v1.2.2...1.x)
+## [Unreleased](https://github.com/laravel/pulse/compare/v1.2.3...1.x)
+
+## [v1.2.3](https://github.com/laravel/pulse/compare/v1.2.2...v1.2.3) - 2024-06-04
+
+* [1.x] Fix DB prefixing for Postgres and SQLite by [@jessarcher](https://github.com/jessarcher) in https://github.com/laravel/pulse/pull/386
 
 ## [v1.2.2](https://github.com/laravel/pulse/compare/v1.2.1...v1.2.2) - 2024-05-26
 
