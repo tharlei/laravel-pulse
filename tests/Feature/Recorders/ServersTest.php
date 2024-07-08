@@ -67,7 +67,7 @@ it('skips missing filesystems when recording events', function () {
     Pulse::handleExceptionsUsing(function () {
         //
     });
-    Config::set('pulse.recorders.'.Servers::class . '.directories', ['/', '/nonexistent']);
+    Config::set('pulse.recorders.'.Servers::class.'.directories', ['/', '/nonexistent']);
     Date::setTestNow(Date::now()->startOfMinute());
 
     event(new SharedBeat(CarbonImmutable::now(), 'instance-id'));
