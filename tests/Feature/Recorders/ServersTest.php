@@ -62,3 +62,19 @@ it('can customise CPU and memory resolution', function () {
     Servers::detectCpuUsing(null);
     Servers::detectMemoryUsing(null);
 });
+
+it('skips missing filesystems when recording events', function () {
+    Pulse::handleExceptionsUsing(function () {
+        //
+    });
+    Config::set('pulse.recorders.'.Servers::class . '.directories', ['/', '/nonexistent']);
+    Date::setTestNow(Date::now()->startOfMinute());
+
+    event(new SharedBeat(CarbonImmutable::now(), 'instance-id'));
+    Pulse::ingest();
+
+    $value = Pulse::ignore(fn () => DB::table('pulse_values')->sole());
+
+    $payload = json_decode($value->value);
+    expect($payload->storage)->toHaveCount(1);
+});
