@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/pulse/compare/v1.2.3...1.x)
+## [Unreleased](https://github.com/laravel/pulse/compare/v1.2.4...1.x)
+
+## [v1.2.4](https://github.com/laravel/pulse/compare/v1.2.3...v1.2.4) - 2024-07-08
+
+* Skip unreadable filesystems by [@27pchrisl](https://github.com/27pchrisl) in https://github.com/laravel/pulse/pull/392
 
 ## [v1.2.3](https://github.com/laravel/pulse/compare/v1.2.2...v1.2.3) - 2024-06-04
 
