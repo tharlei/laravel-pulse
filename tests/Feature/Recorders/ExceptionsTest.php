@@ -115,16 +115,16 @@ it('can ignore exceptions', function () {
 it('can sample', function () {
     Config::set('pulse.recorders.'.Exceptions::class.'.sample_rate', 0.1);
 
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
 
     expect(Pulse::ingest())->toEqualWithDelta(1, 4);
 });
@@ -132,16 +132,16 @@ it('can sample', function () {
 it('can sample at zero', function () {
     Config::set('pulse.recorders.'.Exceptions::class.'.sample_rate', 0);
 
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
 
     expect(Pulse::ingest())->toBe(0);
 });
@@ -149,16 +149,16 @@ it('can sample at zero', function () {
 it('can sample at one', function () {
     Config::set('pulse.recorders.'.Exceptions::class.'.sample_rate', 1);
 
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
-    report(new MyReportedException());
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
+    report(new MyReportedException);
 
     expect(Pulse::ingest())->toBe(10);
 });

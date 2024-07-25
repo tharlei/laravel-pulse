@@ -2,6 +2,7 @@
 
 use Illuminate\Auth\GuardHelpers;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
@@ -15,6 +16,7 @@ use function Pest\Laravel\get;
 use function Pest\Laravel\post;
 
 it('captures authenticated requests', function () {
+    Carbon::setTestNow('2000-01-02 03:04:05');
     Route::get('users', fn () => []);
 
     actingAs(User::make(['id' => '567']))->get('users');
@@ -22,7 +24,7 @@ it('captures authenticated requests', function () {
     $entries = Pulse::ignore(fn () => DB::table('pulse_entries')->get());
     expect($entries)->toHaveCount(1);
     expect($entries[0])->toHaveProperties([
-        'timestamp' => now()->timestamp,
+        'timestamp' => 946782245,
         'type' => 'user_request',
         'key' => '567',
         'value' => null,
