@@ -63,7 +63,7 @@ class StorageFake implements Storage
      */
     public function values(string $type, ?array $keys = null): Collection
     {
-        return new Collection();
+        return new Collection;
     }
 
     /**
@@ -74,7 +74,7 @@ class StorageFake implements Storage
      */
     public function graph(array $types, string $aggregate, CarbonInterval $interval): Collection
     {
-        return new Collection();
+        return new Collection;
     }
 
     /**
@@ -97,7 +97,7 @@ class StorageFake implements Storage
         string $direction = 'desc',
         int $limit = 101,
     ): Collection {
-        return new Collection();
+        return new Collection;
     }
 
     /**
@@ -114,7 +114,7 @@ class StorageFake implements Storage
         string $direction = 'desc',
         int $limit = 101,
     ): Collection {
-        return new Collection();
+        return new Collection;
     }
 
     /**
@@ -128,6 +128,6 @@ class StorageFake implements Storage
         string $aggregate,
         CarbonInterval $interval,
     ): Collection {
-        return new Collection();
+        return new Collection;
     }
 }
