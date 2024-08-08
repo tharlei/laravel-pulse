@@ -50,7 +50,7 @@ it('highlights SQL queries', function () {
 
     Livewire::test(SlowQueries::class, ['lazy' => false])
         ->assertSeeHtml(<<<'HTML'
-            <code class="px-3"><span class="font-semibold">SELECT</span> <span class="text-cyan-200">*</span> <span class="font-semibold">FROM</span> <span class="text-purple-200">`users`</span></code>
+            <code class="px-3"><span class="font-semibold">select</span> <span class="text-cyan-200">*</span> <span class="font-semibold">from</span> <span class="text-purple-200">`users`</span></code>
             HTML);
 });
 
