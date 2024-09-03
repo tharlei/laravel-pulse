@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/pulse/compare/v1.2.4...1.x)
+## [Unreleased](https://github.com/laravel/pulse/compare/v1.2.5...1.x)
+
+## [v1.2.5](https://github.com/laravel/pulse/compare/v1.2.4...v1.2.5) - 2024-09-03
+
+* [1.x] Removed useless default null values for env method by [@siarheipashkevich](https://github.com/siarheipashkevich) in https://github.com/laravel/pulse/pull/404
 
 ## [v1.2.4](https://github.com/laravel/pulse/compare/v1.2.3...v1.2.4) - 2024-07-08
 
