@@ -1,6 +1,11 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/pulse/compare/v1.2.5...1.x)
+## [Unreleased](https://github.com/laravel/pulse/compare/v1.2.6...1.x)
+
+## [v1.2.6](https://github.com/laravel/pulse/compare/v1.2.5...v1.2.6) - 2024-11-12
+
+* [1.x] Format dates to browsers timezone by [@timacdonald](https://github.com/timacdonald) in https://github.com/laravel/pulse/pull/417
+* [1.x] Update NPM dependencies by [@timacdonald](https://github.com/timacdonald) in https://github.com/laravel/pulse/pull/418
 
 ## [v1.2.5](https://github.com/laravel/pulse/compare/v1.2.4...v1.2.5) - 2024-09-03
 
