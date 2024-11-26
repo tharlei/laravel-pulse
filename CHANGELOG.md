@@ -1,6 +1,11 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/pulse/compare/v1.2.6...1.x)
+## [Unreleased](https://github.com/laravel/pulse/compare/v1.2.7...1.x)
+
+## [v1.2.7](https://github.com/laravel/pulse/compare/v1.2.6...v1.2.7) - 2024-11-25
+
+* [1.x] Supports PHP 8.4 by [@crynobone](https://github.com/crynobone) in https://github.com/laravel/pulse/pull/419
+* [1.x] Format dates on graph updates by [@timacdonald](https://github.com/timacdonald) in https://github.com/laravel/pulse/pull/423
 
 ## [v1.2.6](https://github.com/laravel/pulse/compare/v1.2.5...v1.2.6) - 2024-11-12
 
