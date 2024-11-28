@@ -3,6 +3,7 @@
 namespace Tests;
 
 use Carbon\CarbonInterval;
+use DateTimeInterface;
 use Illuminate\Support\Collection;
 use Laravel\Pulse\Contracts\Storage;
 
@@ -32,6 +33,17 @@ class StorageFake implements Storage
     public function trim(): void
     {
         $this->stored = $this->stored->reject(fn ($record) => $record->timestamp <= now()->subWeek()->timestamp);
+    }
+
+    /**
+     * Prune the storage.
+     *
+     * @param  \DateTimeInterface  $before
+     * @return void
+     */
+    public function prune(DateTimeInterface $before): void
+    {
+        $this->stored = $this->stored->reject(fn ($record) => $record->timestamp <= $before->getTimestamp());
     }
 
     /**

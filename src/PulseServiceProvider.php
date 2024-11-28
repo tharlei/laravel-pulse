@@ -234,6 +234,7 @@ class PulseServiceProvider extends ServiceProvider
                 Commands\CheckCommand::class,
                 Commands\RestartCommand::class,
                 Commands\ClearCommand::class,
+                Commands\PruneCommand::class,
             ]);
 
             AboutCommand::add('Pulse', fn () => [

@@ -3,6 +3,7 @@
 namespace Laravel\Pulse\Contracts;
 
 use Carbon\CarbonInterval;
+use DateTimeInterface;
 use Illuminate\Support\Collection;
 
 interface Storage
@@ -18,6 +19,14 @@ interface Storage
      * Trim the storage.
      */
     public function trim(): void;
+
+     /**
+     * Prune the storage.
+     *
+     * @param  \DateTimeInterface  $before
+     * @return void
+     */
+    public function prune(DateTimeInterface $before): void;
 
     /**
      * Purge the storage.

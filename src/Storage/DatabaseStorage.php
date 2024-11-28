@@ -5,6 +5,7 @@ namespace Laravel\Pulse\Storage;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonInterval;
 use Closure;
+use DateTimeInterface;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Database\Connection;
 use Illuminate\Database\DatabaseManager;
@@ -143,6 +144,37 @@ class DatabaseStorage implements Storage
                 ->table('pulse_aggregates')
                 ->where('period', $period)
                 ->where('bucket', '<=', $now->subMinutes($period)->getTimestamp())
+                ->delete());
+    }
+
+    /**
+     * Prune the storage.
+     *
+     * @param  \DateTimeInterface  $before
+     * @return void
+     */
+    public function prune(DateTimeInterface $before): void
+    {
+        $before = CarbonImmutable::parse($before);
+
+        $this->connection()
+            ->table('pulse_values')
+            ->where('timestamp', '<', $before->getTimestamp())
+            ->delete();
+
+        $this->connection()
+            ->table('pulse_entries')
+            ->where('timestamp', '<', $before->getTimestamp())
+            ->delete();
+
+        $this->connection()
+            ->table('pulse_aggregates')
+            ->distinct()
+            ->pluck('period')
+            ->each(fn (int $period) => $this->connection()
+                ->table('pulse_aggregates')
+                ->where('period', $period)
+                ->where('bucket', '<', $before->subMinutes($period)->getTimestamp())
                 ->delete());
     }
 
