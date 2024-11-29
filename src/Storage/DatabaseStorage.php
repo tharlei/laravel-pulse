@@ -124,16 +124,17 @@ class DatabaseStorage implements Storage
      */
     public function trim(): void
     {
+        $keep = $this->config->get('pulse.ingest.trim.keep');
         $now = CarbonImmutable::now();
 
         $this->connection()
             ->table('pulse_values')
-            ->where('timestamp', '<=', $now->subWeek()->getTimestamp())
+            ->where('timestamp', '<=', $now->sub($keep)->getTimestamp())
             ->delete();
 
         $this->connection()
             ->table('pulse_entries')
-            ->where('timestamp', '<=', $now->subWeek()->getTimestamp())
+            ->where('timestamp', '<=', $now->sub($keep)->getTimestamp())
             ->delete();
 
         $this->connection()
