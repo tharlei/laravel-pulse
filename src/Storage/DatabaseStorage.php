@@ -148,37 +148,6 @@ class DatabaseStorage implements Storage
     }
 
     /**
-     * Prune the storage.
-     *
-     * @param  \DateTimeInterface  $before
-     * @return void
-     */
-    public function prune(DateTimeInterface $before): void
-    {
-        $before = CarbonImmutable::parse($before);
-
-        $this->connection()
-            ->table('pulse_values')
-            ->where('timestamp', '<', $before->getTimestamp())
-            ->delete();
-
-        $this->connection()
-            ->table('pulse_entries')
-            ->where('timestamp', '<', $before->getTimestamp())
-            ->delete();
-
-        $this->connection()
-            ->table('pulse_aggregates')
-            ->distinct()
-            ->pluck('period')
-            ->each(fn (int $period) => $this->connection()
-                ->table('pulse_aggregates')
-                ->where('period', $period)
-                ->where('bucket', '<', $before->subMinutes($period)->getTimestamp())
-                ->delete());
-    }
-
-    /**
      * Purge the storage.
      *
      * @param  list<string>  $types

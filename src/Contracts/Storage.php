@@ -20,14 +20,6 @@ interface Storage
      */
     public function trim(): void;
 
-     /**
-     * Prune the storage.
-     *
-     * @param  \DateTimeInterface  $before
-     * @return void
-     */
-    public function prune(DateTimeInterface $before): void;
-
     /**
      * Purge the storage.
      *
