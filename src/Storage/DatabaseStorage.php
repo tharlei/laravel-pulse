@@ -123,8 +123,9 @@ class DatabaseStorage implements Storage
      */
     public function trim(): void
     {
-        $keep = $this->config->get('pulse.ingest.trim.keep');
         $now = CarbonImmutable::now();
+
+        $keep = $this->config->get('pulse.ingest.trim.keep');
 
         $this->connection()
             ->table('pulse_values')
