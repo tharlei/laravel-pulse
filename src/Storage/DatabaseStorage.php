@@ -5,7 +5,6 @@ namespace Laravel\Pulse\Storage;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonInterval;
 use Closure;
-use DateTimeInterface;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Database\Connection;
 use Illuminate\Database\DatabaseManager;

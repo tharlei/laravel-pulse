@@ -3,7 +3,6 @@
 namespace Laravel\Pulse\Contracts;
 
 use Carbon\CarbonInterval;
-use DateTimeInterface;
 use Illuminate\Support\Collection;
 
 interface Storage
